@@ -1,6 +1,13 @@
-import React from "react";
+"use client";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 export default function Page() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-4xl font-bold mb-6 text-gray-800">
