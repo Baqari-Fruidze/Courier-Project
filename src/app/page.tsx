@@ -5,22 +5,22 @@ export default async function Home() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const data = await res.json();
   console.log(data.slice(0, 10));
-  const dataSource = [
-    {
-      key: "1",
-      name: "Mike",
-      age: 32,
-      address: "10 Downing Street",
-      email: "megmail.com",
-    },
-    {
-      key: "2",
-      name: "John",
-      age: 42,
-      address: "10 Downing Street",
-      email: "shen@gmail.com",
-    },
-  ];
+  // const dataSource = [
+  //   {
+  //     key: "1",
+  //     name: "Mike",
+  //     age: 32,
+  //     address: "10 Downing Street",
+  //     email: "megmail.com",
+  //   },
+  //   {
+  //     key: "2",
+  //     name: "John",
+  //     age: 42,
+  //     address: "10 Downing Street",
+  //     email: "shen@gmail.com",
+  //   },
+  // ];
 
   const columns = [
     {
