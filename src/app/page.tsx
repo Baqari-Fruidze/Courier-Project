@@ -2,6 +2,9 @@ import { Table } from "antd";
 
 export default async function Home() {
   // const session = await getServerSession(options);
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await res.json();
+  console.log(data.slice(0, 10));
   const dataSource = [
     {
       key: "1",
@@ -21,30 +24,30 @@ export default async function Home() {
 
   const columns = [
     {
-      title: "Name",
-      dataIndex: "name",
-      key: "name",
+      title: "userId",
+      dataIndex: "userId",
+      key: "userId",
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      key: "age",
+      title: "id",
+      dataIndex: "id",
+      key: "id",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "address",
+      title: "title",
+      dataIndex: "title",
+      key: "title",
     },
     {
-      title: "email",
-      dataIndex: "email",
-      key: "email",
+      title: "body",
+      dataIndex: "body",
+      key: "body",
     },
   ];
   return (
     <>
       <h1>main</h1>
-      <Table dataSource={dataSource} columns={columns} />;
+      <Table dataSource={data} columns={columns} />;
     </>
   );
 }
