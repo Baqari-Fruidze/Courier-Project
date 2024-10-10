@@ -2,14 +2,14 @@
 import { ICourier } from "@/types/Courier";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { courierScema } from "@/scema/ScemaCourier";
 
 export default function Page() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<ICourier>();
+  } = useForm<ICourier>({ resolver: yupResolver(courierScema) });
   const inputsData: SubmitHandler<ICourier> = (data) => console.log(data);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -70,7 +70,7 @@ export default function Page() {
             className="block text-sm font-medium text-gray-700"
             htmlFor="address"
           >
-            Address
+            Email
           </label>
           <input
             type="text"
