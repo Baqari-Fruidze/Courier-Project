@@ -3,13 +3,16 @@ import { ICompany } from "@/types/company";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { companyScema } from "@/scema/ScemaCompany";
+
 export default function Page() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<ICompany>({ resolver: yupResolver(companyScema) });
+
   const inputsData: SubmitHandler<ICompany> = (data) => console.log(data);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-4xl font-bold mb-6 text-gray-800">
@@ -29,7 +32,9 @@ export default function Page() {
           <input
             type="text"
             id="companyName"
-            className="mt-1  block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={`mt-1 outline-none block w-full border ${
+              errors.companyName?.message ? "border-red-600" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
             placeholder="Enter your company name"
             {...register("companyName")}
           />
@@ -44,7 +49,9 @@ export default function Page() {
           <input
             type="text"
             id="address"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={` outline-none mt-1 block w-full border ${
+              errors.email?.message ? "border-red-600" : "border-gray-300"
+            } rounded-md shadow-sm p-2 `}
             placeholder="Enter your email"
             {...register("email")}
           />
@@ -59,7 +66,9 @@ export default function Page() {
           <input
             type="text"
             id="phoneNumber"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={` outline-none mt-1 block w-full border ${
+              errors.phoneNumber?.message ? "border-red-600" : "border-gray-300"
+            }  rounded-md shadow-sm p-2`}
             placeholder="Enter your phone number"
             {...register("phoneNumber")}
           />
@@ -74,7 +83,9 @@ export default function Page() {
           <input
             type="text"
             id="city"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={` outline-none mt-1 block w-full border ${
+              errors.city?.message ? "border-red-600" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
             placeholder="Enter your city"
             {...register("city")}
           />
@@ -89,7 +100,9 @@ export default function Page() {
           <input
             type="text"
             id="street"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={` outline-none mt-1 block w-full border ${
+              errors.street?.message ? "border-red-600" : "border-gray-300"
+            } rounded-md shadow-sm p-2 `}
             placeholder="Enter your street"
             {...register("street")}
           />
@@ -104,7 +117,9 @@ export default function Page() {
           <input
             type="text"
             id="houseNumber"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={` outline-none mt-1 block w-full border ${
+              errors.houseNumber?.message ? "border-red-600" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
             placeholder="Enter your house number"
             {...register("houseNumber")}
           />
@@ -119,7 +134,9 @@ export default function Page() {
           <input
             type="text"
             id="username"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={` outline-none mt-1 block w-full border ${
+              errors.userName?.message ? "border-red-600" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
             placeholder="Enter your username"
             {...register("userName")}
           />
@@ -134,7 +151,9 @@ export default function Page() {
           <input
             type="password"
             id="password"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={` outline-none mt-1 block w-full border ${
+              errors.password?.message ? "border-red-600" : "border-gray-300"
+            } rounded-md shadow-sm p-2 `}
             placeholder="Enter your password"
             {...register("password")}
           />
@@ -149,7 +168,9 @@ export default function Page() {
           <input
             type="password"
             id="repeatPassword"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={` outline-none mt-1 block w-full border ${
+              errors.Rpassword?.message ? "border-red-600" : "border-gray-300"
+            } rounded-md shadow-sm p-2 `}
             placeholder="Repeat your password"
             {...register("Rpassword")}
           />
