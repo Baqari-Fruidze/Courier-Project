@@ -1,10 +1,16 @@
 "use client";
+import hide from "../../images/inputhide.svg";
+import show from "../../images/inputShow.svg";
 import { ICourier } from "@/types/Courier";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { courierScema } from "@/scema/ScemaCourier";
+import { useState } from "react";
+import Image from "next/image";
 
 export default function Page() {
+  const [hidePass, setHidePas] = useState(true);
+  const [RhidePass, setRHidePas] = useState(true);
   const {
     register,
     handleSubmit,
@@ -107,7 +113,7 @@ export default function Page() {
             {...register("userName")}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 relative">
           <label
             className="block text-sm font-medium text-gray-700"
             htmlFor="password"
@@ -115,7 +121,7 @@ export default function Page() {
             Password
           </label>
           <input
-            type="password"
+            type={`${hidePass ? "password" : "text"}`}
             id="password"
             className={`outline-none mt-1 block w-full border ${
               errors.password ? "border-red-500" : "border-gray-300"
@@ -123,8 +129,27 @@ export default function Page() {
             placeholder="Enter your password"
             {...register("password")}
           />
+          {hidePass ? (
+            <Image
+              src={hide}
+              width={24}
+              height={24}
+              alt=" hide icon"
+              className="absolute top-[50%] right-6"
+              onClick={() => setHidePas((prev) => !prev)}
+            ></Image>
+          ) : (
+            <Image
+              src={show}
+              width={24}
+              height={24}
+              alt="show Icon"
+              className="absolute top-[50%] right-6"
+              onClick={() => setHidePas((prev) => !prev)}
+            ></Image>
+          )}
         </div>
-        <div className="mb-6">
+        <div className="mb-6 relative">
           <label
             className="block text-sm font-medium text-gray-700"
             htmlFor="repeatPassword"
@@ -132,7 +157,7 @@ export default function Page() {
             Repeat Password
           </label>
           <input
-            type="password"
+            type={RhidePass ? "password" : "text"}
             id="repeatPassword"
             className={`outline-none mt-1 block w-full border ${
               errors.Rpassword ? "border-red-500" : "border-gray-300"
@@ -140,6 +165,25 @@ export default function Page() {
             placeholder="Repeat your password"
             {...register("Rpassword")}
           />
+          {RhidePass ? (
+            <Image
+              src={hide}
+              width={24}
+              height={24}
+              alt=" hide icon"
+              className="absolute top-[50%] right-6"
+              onClick={() => setRHidePas((prev) => !prev)}
+            ></Image>
+          ) : (
+            <Image
+              src={show}
+              width={24}
+              height={24}
+              alt="show Icon"
+              className="absolute top-[50%] right-6"
+              onClick={() => setRHidePas((prev) => !prev)}
+            ></Image>
+          )}
         </div>
         <button
           type="submit"
