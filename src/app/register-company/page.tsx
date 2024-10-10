@@ -1,13 +1,14 @@
 "use client";
 import { ICompany } from "@/types/company";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { companyScema } from "@/scema/ScemaCompany";
 export default function Page() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm<ICompany>();
+  } = useForm<ICompany>({ resolver: yupResolver(companyScema) });
   const inputsData: SubmitHandler<ICompany> = (data) => console.log(data);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -38,13 +39,13 @@ export default function Page() {
             className="block text-sm font-medium text-gray-700"
             htmlFor="address"
           >
-            Address
+            Email
           </label>
           <input
             type="text"
             id="address"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Enter your address"
+            placeholder="Enter your email"
             {...register("email")}
           />
         </div>

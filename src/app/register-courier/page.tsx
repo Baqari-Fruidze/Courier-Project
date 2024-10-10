@@ -1,5 +1,7 @@
 "use client";
+import { ICourier } from "@/types/Courier";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Page() {
   const {
@@ -7,13 +9,17 @@ export default function Page() {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm<ICourier>();
+  const inputsData: SubmitHandler<ICourier> = (data) => console.log(data);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-4xl font-bold mb-6 text-gray-800">
         Register Courier
       </h1>
-      <form className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg">
+      <form
+        className="bg-white shadow-md rounded-lg p-8 w-full max-w-lg"
+        onSubmit={handleSubmit(inputsData)}
+      >
         <div className="mb-4">
           <label
             className="block text-sm font-medium text-gray-700"
@@ -26,6 +32,7 @@ export default function Page() {
             id="name"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter your name"
+            {...register("name")}
           />
         </div>
         <div className="mb-4">
@@ -40,6 +47,7 @@ export default function Page() {
             id="lastName"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter your last name"
+            {...register("lastName")}
           />
         </div>
         <div className="mb-4">
@@ -54,6 +62,7 @@ export default function Page() {
             id="phoneNumber"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter your phone number"
+            {...register("phoneNumber")}
           />
         </div>
         <div className="mb-4">
@@ -68,6 +77,7 @@ export default function Page() {
             id="address"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter your address"
+            {...register("email")}
           />
         </div>
         <div className="mb-4">
@@ -82,6 +92,7 @@ export default function Page() {
             id="username"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter your username"
+            {...register("userName")}
           />
         </div>
         <div className="mb-4">
@@ -96,6 +107,7 @@ export default function Page() {
             id="password"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
             placeholder="Enter your password"
+            {...register("password")}
           />
         </div>
         <div className="mb-6">
@@ -110,6 +122,7 @@ export default function Page() {
             id="repeatPassword"
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
             placeholder="Repeat your password"
+            {...register("Rpassword")}
           />
         </div>
         <button
