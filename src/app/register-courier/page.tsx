@@ -10,7 +10,9 @@ export default function Page() {
     handleSubmit,
     formState: { errors },
   } = useForm<ICourier>({ resolver: yupResolver(courierScema) });
+
   const inputsData: SubmitHandler<ICourier> = (data) => console.log(data);
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <h1 className="text-4xl font-bold mb-6 text-gray-800">
@@ -30,7 +32,9 @@ export default function Page() {
           <input
             type="text"
             id="name"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={`outline-none mt-1 block w-full border ${
+              errors.name ? "border-red-500" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
             placeholder="Enter your name"
             {...register("name")}
           />
@@ -45,7 +49,9 @@ export default function Page() {
           <input
             type="text"
             id="lastName"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={`outline-none mt-1 block w-full border ${
+              errors.lastName ? "border-red-500" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
             placeholder="Enter your last name"
             {...register("lastName")}
           />
@@ -60,7 +66,9 @@ export default function Page() {
           <input
             type="text"
             id="phoneNumber"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={`outline-none mt-1 block w-full border ${
+              errors.phoneNumber ? "border-red-500" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
             placeholder="Enter your phone number"
             {...register("phoneNumber")}
           />
@@ -75,8 +83,10 @@ export default function Page() {
           <input
             type="text"
             id="address"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Enter your address"
+            className={`outline-none mt-1 block w-full border ${
+              errors.email ? "border-red-500" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
+            placeholder="Enter your email"
             {...register("email")}
           />
         </div>
@@ -90,7 +100,9 @@ export default function Page() {
           <input
             type="text"
             id="username"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={`outline-none mt-1 block w-full border ${
+              errors.userName ? "border-red-500" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
             placeholder="Enter your username"
             {...register("userName")}
           />
@@ -105,7 +117,9 @@ export default function Page() {
           <input
             type="password"
             id="password"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={`outline-none mt-1 block w-full border ${
+              errors.password ? "border-red-500" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
             placeholder="Enter your password"
             {...register("password")}
           />
@@ -120,7 +134,9 @@ export default function Page() {
           <input
             type="password"
             id="repeatPassword"
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring focus:ring-blue-500 focus:border-blue-500"
+            className={`outline-none mt-1 block w-full border ${
+              errors.Rpassword ? "border-red-500" : "border-gray-300"
+            } rounded-md shadow-sm p-2`}
             placeholder="Repeat your password"
             {...register("Rpassword")}
           />
