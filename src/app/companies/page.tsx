@@ -1,9 +1,12 @@
+import ExcelUploader from "@/components/ExcelelUploadInput";
 import React from "react";
+import Link from "next/link";
 
 export default function page() {
   return (
     <div>
-      <h1>compani list</h1>
+      <Link href={`/Parcels`}>My Parcels</Link>
+      <ExcelUploader />
     </div>
   );
 }
