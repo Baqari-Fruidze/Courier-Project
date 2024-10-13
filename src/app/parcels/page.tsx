@@ -1,9 +1,17 @@
 import React from "react";
 
-export default function page() {
+export default function Page() {
   return (
-    <div>
-      <h1>parcels page</h1>
-    </div>
+    <form>
+      <label>Select your preference:</label>
+
+      <input type="radio" id="enter" name="value" value="" />
+      <label htmlFor="enter">enter</label>
+
+      <input type="radio" id="investor" name="value" />
+      <label htmlFor="inverstor">investor</label>
+
+      <input type="submit" value="Submit" />
+    </form>
   );
 }
