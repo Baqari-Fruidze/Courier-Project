@@ -1,6 +1,12 @@
+import { getServerSession } from "next-auth";
 import React from "react";
+import { options } from "../api/auth/[...nextauth]/option";
+import { redirect } from "next/navigation";
 
-export default function Page() {
+export default async function Page() {
+  const session = await getServerSession(options); ///// server side
+  console.log(session?.user);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-sm">

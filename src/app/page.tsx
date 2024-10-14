@@ -1,4 +1,5 @@
 // import { Table } from "antd";
+import { getServerSession } from "next-auth";
 
 // export default async function Home() {
 //   // const session = await getServerSession(options);
@@ -53,8 +54,11 @@
 // }
 
 import { Table } from "antd";
+import { options } from "./api/auth/[...nextauth]/option";
 
 export default async function Home() {
+  const session = await getServerSession(options); ///// server side
+  console.log(session?.user);
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const data = await res.json();
 
