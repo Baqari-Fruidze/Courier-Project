@@ -18,13 +18,14 @@ export const options: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        console.log("test");
+        console.log("credentials");
         const user = {
           id: "1",
-          name: "beqa",
-          password: "beqa123",
-          email: "beqa@gmail.com",
-          age: 21,
+          name: "baqari",
+          password: "baqari1234",
+          email: "baqari@gmail.com",
+          age: 30,
+          status: "investor",
         };
 
         if (

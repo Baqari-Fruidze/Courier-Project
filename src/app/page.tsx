@@ -58,7 +58,7 @@ import { options } from "./api/auth/[...nextauth]/option";
 
 export default async function Home() {
   const session = await getServerSession(options); ///// server side
-  console.log(session?.user);
+  console.log(session);
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const data = await res.json();
 
@@ -94,6 +94,7 @@ export default async function Home() {
         scroll={{ y: 300 }} // This sets the table body height to 200px and enables vertical scroll
         pagination={false} // Optionally disable pagination for better scrolling experience
       />
+      <h1>{session?.user?.name}</h1>
     </>
   );
 }
